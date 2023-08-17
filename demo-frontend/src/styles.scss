@@ -1,0 +1,28 @@
+/* You can add global styles to this file, and also import other style files */
+@import "ngx-toastr/toastr";
+@import "semantic-ui-css/semantic.css";
+.u-margin-top-small {
+  margin-top: 1rem;
+}
+
+.u-padding-small {
+  padding: 10px;
+}
+.container-small {
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.ui-sticky {
+  position: sticky;
+  top: 0;
+}
+.bg-white {
+  background-color: white;
+}
+
+.space-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

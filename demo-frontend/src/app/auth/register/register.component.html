@@ -1,0 +1,42 @@
+<app-navbar></app-navbar>
+<div class="ui container u-margin-top-small">
+  <div class="container-small">
+    <div class="ui attached message">
+      <div class="header">Welcome to our site!</div>
+      <p>Fill out the form below to sign-up for a new account</p>
+    </div>
+    <form
+      class="ui form attached fluid segment"
+      [formGroup]="registerForm"
+      [ngClass]="{ loading: loading }"
+      (ngSubmit)="handleRegister()"
+    >
+      <app-input
+        [control]="registerForm.controls.firstName"
+        label="First Name"
+        inputType="text"
+      ></app-input>
+      <app-input
+        [control]="registerForm.controls.lastName"
+        label="Last Name"
+        inputType="text"
+      ></app-input>
+      <app-input
+        [control]="registerForm.controls.email"
+        label="Email"
+        inputType="email"
+      ></app-input>
+      <app-input
+        [control]="registerForm.controls.password"
+        label="Password"
+        inputType="password"
+      ></app-input>
+      <br />
+      <button type="submit" class="ui blue submit button">Register</button>
+    </form>
+    <div class="ui bottom attached warning message">
+      <i class="icon help"></i>
+      Already signed up? <a routerLink="/auth/login">Login here</a> instead.
+    </div>
+  </div>
+</div>

@@ -1,0 +1,23 @@
+<app-navbar></app-navbar>
+<div class="ui container u-margin-top-small">
+  <div class="container-small">
+    <div class="ui attached success message">
+      <div class="header">Welcome Admin!</div>
+    </div>
+    <form
+      class="ui form attached fluid segment"
+      [ngClass]="{ loading: loading }"
+      (ngSubmit)="handleLoginForm()"
+      [formGroup]="loginForm"
+    >
+      <app-input
+        [control]="loginForm.controls.password"
+        inputType="password"
+        label="Password"
+      ></app-input>
+      <p>Password: Simform123</p>
+      <br />
+      <button type="submit" class="ui blue submit button">Login</button>
+    </form>
+  </div>
+</div>

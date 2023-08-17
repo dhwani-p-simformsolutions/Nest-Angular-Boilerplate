@@ -1,0 +1,33 @@
+<div class="ui card" style="width: 100%">
+  <div class="content">
+    <div class="right floated meta">{{ post.createdAt | date }}</div>
+    {{ post.author.firstName }} {{ post.author.lastName }}
+  </div>
+  <div class="u-padding-small">
+    <div class="ui dividing header">
+      <a [routerLink]="['/posts', post.id]">{{ post.title }}</a>
+    </div>
+    <p>
+      {{ post.description }}
+    </p>
+  </div>
+  <div class="u-padding-small space-between">
+
+
+    <!--  checking for self -->
+    <ng-container *ngIf="user.id==post.author.id">
+      <div>
+        <div class="ui labeled button" tabindex="0">
+          <button (click)="handleEditButton(post.id)" class="ui orange button">
+            <i class="pencil alternate icon"></i> Edit
+          </button>
+        </div>
+        <div class="ui labeled button" tabindex="0">
+          <button (click)="handleDeleteButton(post.id)" class="ui red button">
+            <i class="trash alternate icon"></i> Delete
+          </button>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>

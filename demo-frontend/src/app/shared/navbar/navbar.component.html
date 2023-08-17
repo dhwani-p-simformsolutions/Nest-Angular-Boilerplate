@@ -1,0 +1,17 @@
+<div class="ui container bg-white">
+  <div class="ui secondary pointing menu">
+    <div class="right menu">
+      <ng-container *ngIf="(signedin$ | async) === true">
+        <a routerLink="/" class="ui item" routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }">Posts</a>
+        <a routerLink="/auth/logout" class="ui item" routerLinkActive="active">Logout</a>
+      </ng-container>
+
+      <ng-container *ngIf="(signedin$ | async) === false">
+        <a routerLink="/auth/login" class="ui item" routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }">Login</a>
+        <a routerLink="/auth/register" class="ui item" routerLinkActive="active">Register</a>
+      </ng-container>
+    </div>
+  </div>
+</div>

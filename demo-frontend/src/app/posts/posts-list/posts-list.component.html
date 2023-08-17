@@ -1,0 +1,172 @@
+<app-navbar></app-navbar>
+<div class="ui container u-margin-top-small u-padding-small">
+  <br />
+  <div class="ui placeholder segment" *ngIf="(signedIn$ | async) === false">
+    <div class="ui icon header">
+      <i class="pdf pencil alternate icon"></i>
+      Join to start writing post!
+    </div>
+    <a routerLink="/auth/register" class="ui primary button">Register Now!</a>
+  </div>
+  <div class="ui grid" *ngIf="loading === false && (signedIn$ | async) === true">
+    <div class="twelve wide column">
+      <div class="ui attached message">
+        <div class="header">Post Something New Today!</div>
+      </div>
+      <form class="ui form attached fluid segment" (ngSubmit)="handlePostCreate()" [formGroup]="postForm">
+        <app-input label="Title" [control]="postForm.controls.title" inputType="text"></app-input>
+        <app-input label="Content" [control]="postForm.controls.description" controlType="textarea"></app-input>
+        <br />
+        <button *ngIf="!postEditMode" type="submit" [disabled]="postForm.invalid"
+          class="ui blue right labeled icon submit button" [ngClass]="{ loading: postCreateLoading }">
+          <i class="right pencil alternate icon"></i>Create
+        </button>
+        <button *ngIf="postEditMode" type="submit" [disabled]="postForm.invalid"
+          class="ui orange right labeled icon submit button" [ngClass]="{ loading: postCreateLoading }">
+          <i class="right pencil alternate icon"></i>Update
+        </button>
+      </form>
+    </div>
+
+    <div class="two wide column">
+      <h2 class="ui header">Settings</h2>
+      <div class="ui vertical menu">
+        <a class="item" routerLink="/user/profile"> Profile </a>
+        <a class="item" routerLink="/auth/logout"> Logout </a>
+      </div>
+
+    </div>
+  </div>
+  <div class="ui horizontal divider" *ngIf="loading === false">Posts</div>
+  <div class="u-padding-small" *ngIf="loading === false; else shallLoading">
+    <div class="ui grid container">
+      <div class="eight wide column" *ngFor="let post of posts">
+        <app-post-item [post]="post" (handleDelete)="handleDeletePost($event)"
+          (handleEdit)="handlePostEditButtonClick($event)" [user]="user"></app-post-item>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #shallLoading>
+  <div class="ui two column stackable grid">
+    <div class="column">
+      <div class="ui raised segment">
+        <div class="ui placeholder">
+          <div class="image header">
+            <div class="line"></div>
+            <div class="line"></div>
+          </div>
+          <div class="paragraph">
+            <div class="medium line"></div>
+            <div class="short line"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="column">
+      <div class="ui raised segment">
+        <div class="ui placeholder">
+          <div class="image header">
+            <div class="line"></div>
+            <div class="line"></div>
+          </div>
+          <div class="paragraph">
+            <div class="medium line"></div>
+            <div class="short line"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="ui two column stackable grid">
+    <div class="column">
+      <div class="ui raised segment">
+        <div class="ui placeholder">
+          <div class="image header">
+            <div class="line"></div>
+            <div class="line"></div>
+          </div>
+          <div class="paragraph">
+            <div class="medium line"></div>
+            <div class="short line"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="column">
+      <div class="ui raised segment">
+        <div class="ui placeholder">
+          <div class="image header">
+            <div class="line"></div>
+            <div class="line"></div>
+          </div>
+          <div class="paragraph">
+            <div class="medium line"></div>
+            <div class="short line"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="ui two column stackable grid">
+    <div class="column">
+      <div class="ui raised segment">
+        <div class="ui placeholder">
+          <div class="image header">
+            <div class="line"></div>
+            <div class="line"></div>
+          </div>
+          <div class="paragraph">
+            <div class="medium line"></div>
+            <div class="short line"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="column">
+      <div class="ui raised segment">
+        <div class="ui placeholder">
+          <div class="image header">
+            <div class="line"></div>
+            <div class="line"></div>
+          </div>
+          <div class="paragraph">
+            <div class="medium line"></div>
+            <div class="short line"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="ui two column stackable grid">
+    <div class="column">
+      <div class="ui raised segment">
+        <div class="ui placeholder">
+          <div class="image header">
+            <div class="line"></div>
+            <div class="line"></div>
+          </div>
+          <div class="paragraph">
+            <div class="medium line"></div>
+            <div class="short line"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="column">
+      <div class="ui raised segment">
+        <div class="ui placeholder">
+          <div class="image header">
+            <div class="line"></div>
+            <div class="line"></div>
+          </div>
+          <div class="paragraph">
+            <div class="medium line"></div>
+            <div class="short line"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>

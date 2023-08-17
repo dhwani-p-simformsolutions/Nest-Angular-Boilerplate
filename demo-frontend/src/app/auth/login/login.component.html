@@ -1,0 +1,20 @@
+<app-navbar></app-navbar>
+<div class="ui container u-margin-top-small">
+  <div class="container-small">
+    <div class="ui attached success message">
+      <div class="header">Welcome Back!</div>
+      <p>Login Your account to Enjoy!</p>
+    </div>
+    <form class="ui form attached fluid segment" [ngClass]="{ loading: loading }" (ngSubmit)="loginUser()"
+      [formGroup]="loginForm">
+      <app-input [control]="loginForm.controls.email" inputType="email" label="Email"></app-input>
+      <app-input [control]="loginForm.controls.password" inputType="password" label="Password"></app-input>
+      <br />
+      <button type="submit" class="ui blue submit button">Submit</button>
+    </form>
+    <div class="ui bottom attached warning message">
+      <i class="icon help"></i>
+      New Here? <a routerLink="/auth/register">Register here</a> instead.
+    </div>
+  </div>
+</div>

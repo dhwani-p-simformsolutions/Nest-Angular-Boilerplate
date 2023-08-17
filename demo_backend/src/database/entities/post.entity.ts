@@ -1,0 +1,34 @@
+import {
+  Column,
+  CreateDateColumn,
+  DeleteDateColumn,
+  Entity,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from 'typeorm';
+import { User } from './user.entity';
+
+@Entity('posts')
+export class Posts {
+  @PrimaryGeneratedColumn()
+  public id: number;
+
+  @Column({ type: 'varchar' })
+  public title: string;
+
+  @Column({ type: 'varchar' })
+  public description: string;
+
+  @CreateDateColumn()
+  public createdAt: Date;
+
+  @UpdateDateColumn()
+  public updatedAt: Date;
+
+  @DeleteDateColumn()
+  public deletedAt: Date;
+
+  @ManyToOne(() => User, (user) => user.posts)
+  public author: User;
+}

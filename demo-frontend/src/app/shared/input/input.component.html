@@ -1,0 +1,28 @@
+<div
+  class="field"
+  [ngClass]="{ error: (control.touched || control.dirty) && control.invalid }"
+>
+  <label>{{ label }}</label>
+  <input
+    *ngIf="controlType === 'input'"
+    [type]="inputType"
+    [formControl]="control"
+  />
+  <textarea
+    *ngIf="controlType === 'textarea'"
+    [formControl]="control"
+  ></textarea>
+  <ng-container *ngIf="control.errors">
+    <div class="ui pointing red basic label" *ngIf="showErrors()">
+      <p *ngIf="control.hasError('required')">Value is required!</p>
+      <p *ngIf="control.hasError('minlength')">
+        length must be {{ control.errors["minlength"].requiredLength }}
+      </p>
+      <p *ngIf="control.hasError('maxlength')">
+        length must be {{ control.errors["maxlength"].requiredLength }}
+      </p>
+      <p *ngIf="control.hasError('pattern')">Invalid Format!</p>
+      <p *ngIf="control.hasError('email')">Invalid Email!</p>
+    </div>
+  </ng-container>
+</div>
