@@ -1,27 +1,61 @@
-# Demo
+## Prerequisites
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.1.
+Before you begin, make sure you have the following installed:
 
-## Development server
+- Node.js (v16.x.x or higher)
+- npm (v7.x.x or higher)
+- Angular CLI (v16.x.x)
+- Git (for cloning the repository)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Getting Started
 
-## Code scaffolding
+1. Clone the repository to your local machine:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+   ```bash
+   git clone "project-url"
+   cd angular-project
+   ```
 
-## Build
+2. Install project dependencies:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+   ```bash
+   npm install
+   ```
 
-## Running unit tests
+## Running the Project
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+1. Open a terminal and navigate to the project directory.
 
-## Running end-to-end tests
+2. Start the development server:
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+   ```bash
+   npm start
+   ```
 
-## Further help
+   This will build the project and serve it on `http://localhost:4200/`.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Additional Commands
+
+- Build the project:
+
+  ```bash
+  npm run build
+  ```
+
+- Run unit tests:
+
+  ```bash
+  npm test
+  ```
+
+- Generate a new component:
+
+  ```bash
+  ng generate component component-name
+  ```
+
+- Generate a new service:
+
+  ```bash
+  ng generate service service-name
+  ```
