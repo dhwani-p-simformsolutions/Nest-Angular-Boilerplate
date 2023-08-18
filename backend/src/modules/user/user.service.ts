@@ -12,7 +12,6 @@ import { UserRepository } from '../../shared/repository';
 import { UserLoginDto } from './dto/user-login.dto';
 import { createHash, match } from '../../utils/helper';
 import { UserCreateDto } from './dto/user-create.dto';
-import * as jwt from 'jsonwebtoken';
 
 @Injectable()
 export class UserService {
@@ -20,8 +19,9 @@ export class UserService {
 
   /**
    * Log in a user.
-   * @param data - The data containing the user's email and password.
-   * @returns An object containing auth tokens.
+   * @param {UserLoginDto} data - The data containing the user's email and password.
+   * @returns {Promise<AuthToken>} An object containing auth tokens.
+   * @throws {InternalServerErrorException} If an error occurs while processing the request.
    */
   public async login(data: UserLoginDto): Promise<AuthToken> {
     try {
@@ -39,6 +39,12 @@ export class UserService {
     }
   }
 
+  /**
+   * Get user details from an access token.
+   * @param {string} accessToken - The access token to extract user details from.
+   * @returns {Promise<any>} An object containing user details.
+   * @throws {UnauthorizedException} If the access token is invalid.
+   */
   public async getUserDetailsFromAccessToken(accessToken: string): Promise<any> {
     try {
       const decodedToken = this.tokenService.verify(accessToken);
@@ -56,8 +62,9 @@ export class UserService {
 
   /**
    * Sign up a new user.
-   * @param data - The data containing the user's signup information.
-   * @returns An object containing auth tokens.
+   * @param {UserCreateDto} data - The data containing the user's signup information.
+   * @returns {Promise<AuthToken>} An object containing auth tokens.
+   * @throws {InternalServerErrorException} If an error occurs while processing the request.
    */
   public async signup(data: UserCreateDto): Promise<AuthToken> {
     try {
@@ -83,8 +90,9 @@ export class UserService {
 
   /**
    * Get new tokens using a refresh token.
-   * @param refreshToken - The refresh token to use for generating new tokens.
-   * @returns An object containing new auth tokens.
+   * @param {string} refreshToken - The refresh token to use for generating new tokens.
+   * @returns {Promise<AuthToken>} An object containing new auth tokens.
+   * @throws {HttpException} If an error occurs while processing the request.
    */
   public async getToken(refreshToken: string): Promise<AuthToken> {
     try {
