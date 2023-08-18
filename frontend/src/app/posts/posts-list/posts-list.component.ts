@@ -40,7 +40,6 @@ export class PostsListComponent implements OnInit {
   ) {
     this.signedIn$ = this.authService.signedIn$;
     this.adminSignedIn$ = this.adminAuthService.signedIn$;
-    // this.user = JSON.parse(localStorage.getItem('user') || '');
     const storedUser = localStorage.getItem('user');
 
     this.user = storedUser ? JSON.parse(storedUser) : null;

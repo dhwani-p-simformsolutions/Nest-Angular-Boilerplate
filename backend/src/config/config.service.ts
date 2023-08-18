@@ -8,6 +8,7 @@ export class ConfigService {
   constructor() {
     this.config.env = process.env.NODE_ENV;
     this.config.authKey = process.env.AUTH_SECRET;
+    this.config.refAuthKey = process.env.REF_AUTH_SECRET;
     this.config.accesstokenExpr = process.env.ACCESS_EXP;
     this.config.refreshtokenExpr = process.env.REFRESH_EXP;
     this.config.sourceEmail = process.env.SOURCE_EMAIL;

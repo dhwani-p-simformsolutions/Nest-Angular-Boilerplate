@@ -44,15 +44,7 @@ export class UserController {
   async getUserDetails(@Headers('authorization') authHeader: string): Promise<any> {
     const [bearer, accessToken] = authHeader.split(' ');
 
-    if (!accessToken) {
-      throw new UnauthorizedException('Access token not found');
-    }
-
     const userDetails = await this.userService.getUserDetailsFromAccessToken(accessToken);
-
-    if (!userDetails) {
-      throw new UnauthorizedException('Invalid access token');
-    }
 
     return userDetails;
   }

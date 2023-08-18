@@ -12,6 +12,7 @@ import { UserRepository } from '../../shared/repository';
 import { UserLoginDto } from './dto/user-login.dto';
 import { createHash, match } from '../../utils/helper';
 import { UserCreateDto } from './dto/user-create.dto';
+import { statusMessages } from 'src/common/constant';
 
 @Injectable()
 export class UserService {
@@ -50,13 +51,13 @@ export class UserService {
       const decodedToken = this.tokenService.verify(accessToken);
 
       if (!decodedToken) {
-        throw new UnauthorizedException('Invalid access token');
+        throw new UnauthorizedException(statusMessages[401]);
       }
 
       const user = decodedToken;
       return user || null;
     } catch (e) {
-      throw new UnauthorizedException('Invalid access token');
+      throw new UnauthorizedException(statusMessages[401]);
     }
   }
 

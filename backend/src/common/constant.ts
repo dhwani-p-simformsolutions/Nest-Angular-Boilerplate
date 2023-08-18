@@ -23,6 +23,11 @@ export const statusMessages = {
   204: 'NoContent',
   205: 'ResetContent',
   206: 'PartialContent',
+  500: 'InternalServerError',
+  401: 'UnAuthorizedError',
+  403: 'ForbiddenError',
+  404: 'NotFoundError',
+  409: 'DuplicateError',
 };
 
 /**

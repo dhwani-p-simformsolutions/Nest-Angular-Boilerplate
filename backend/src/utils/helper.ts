@@ -1,10 +1,10 @@
 import * as bcrypt from 'bcrypt';
 import { readFile } from 'fs';
 
-const saltOrRounds = 10;
+const saltOrRounds = process.env.SALT_ROUNDS;
 
 export const createHash = (password: string): string => {
-  const hash = bcrypt.hashSync(password, saltOrRounds);
+  const hash = bcrypt.hashSync(password, parseInt(saltOrRounds));
   return hash;
 };
 

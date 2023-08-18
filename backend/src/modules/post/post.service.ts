@@ -3,6 +3,7 @@ import { Posts, User } from 'src/database/entities';
 import { PostRepository } from '../../shared/repository';
 import { PostCreateDto } from './dto/post-create.dto';
 import { PostUpdateDto } from './dto/post-update.dto';
+import { statusMessages } from 'src/common/constant';
 
 @Injectable()
 export class PostService {
@@ -41,7 +42,7 @@ export class PostService {
 
       return posts;
     } catch (error) {
-      throw new Error('Error fetching posts by user ID');
+      throw new Error(statusMessages[500]);
     }
   }
 
@@ -54,7 +55,7 @@ export class PostService {
     try {
       return await this.postRepo.findOne(postId, { relations: ['author'] });
     } catch (error) {
-      throw new Error('Error fetching post by ID');
+      throw new Error(statusMessages[500]);
     }
   }
 
@@ -66,10 +67,10 @@ export class PostService {
     try {
       const deleteResult = await this.postRepo.delete(postId);
       if (deleteResult.affected === 0) {
-        throw new NotFoundException('Post not found');
+        throw new NotFoundException(statusMessages[404]);
       }
     } catch (error) {
-      throw new Error('Error deleting post by ID');
+      throw new Error(statusMessages[500]);
     }
   }
 
@@ -83,7 +84,7 @@ export class PostService {
     const postToUpdate = await this.postRepo.findOne(postId);
 
     if (!postToUpdate) {
-      throw new NotFoundException('Post not found');
+      throw new NotFoundException(statusMessages[404]);
     }
 
     // Update fields from updateData
