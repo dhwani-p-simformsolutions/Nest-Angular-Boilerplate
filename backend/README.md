@@ -6,7 +6,7 @@
   - for staging server > `.stage.env`
   - for production server > `.production.env`
 
-- For more information, refer `.example.env` file.
+- For more information, refer `example.env` file.
 - If you're running it with `docker-compose` you need to change database port to `5431`.
 
 ## Installation
