@@ -6,7 +6,7 @@ BootstrapConsole.init({
   contextOptions: { logger: ['error', 'warn'] },
   module: AppModule,
 })
-  .then(({ app, boot }) => {
+  .then(({ boot }) => {
     boot();
   })
   .catch((e) => console.log('Error', e));

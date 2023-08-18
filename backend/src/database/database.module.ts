@@ -23,6 +23,7 @@ const databaseProviders = [
         synchronize: true,
         logging: env === 'development',
         namingStrategy: new SnakeNamingStrategy(),
+        poolSize: config.DB_POOL_SIZE || 10,
       });
     },
     inject: [ConfigService],

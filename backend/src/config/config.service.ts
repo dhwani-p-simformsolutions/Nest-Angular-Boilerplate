@@ -21,6 +21,7 @@ export class ConfigService {
       DB_USER: process.env.DB_USER,
       DB_PASSWORD: process.env.DB_PASSWORD,
       DB_NAME: process.env.DB_NAME,
+      DB_POOL_SIZE: parseInt(process.env.DB_POOL_SIZE, 10) || 10, // Pool size
     };
     this.config.aws = {
       accessKeyId: process.env.AWS_ACCESS_KEY,

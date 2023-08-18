@@ -6,11 +6,10 @@ import {
   HttpCode,
   Post,
   Headers,
-  UnauthorizedException,
   UseInterceptors,
 } from '@nestjs/common';
 import { ApiBearerAuth } from '@nestjs/swagger';
-import { AuthToken } from 'src/shared/interfaces';
+import { AuthToken, UserDetails } from 'src/shared/interfaces';
 import { TokenDto } from './dto/token.dto';
 import { UserCreateDto } from './dto/user-create.dto';
 import { UserLoginDto } from './dto/user-login.dto';
@@ -41,8 +40,8 @@ export class UserController {
   }
 
   @Get('/me')
-  async getUserDetails(@Headers('authorization') authHeader: string): Promise<any> {
-    const [bearer, accessToken] = authHeader.split(' ');
+  async getUserDetails(@Headers('authorization') authHeader: string): Promise<UserDetails> {
+    const [, accessToken] = authHeader.split(' ');
 
     const userDetails = await this.userService.getUserDetailsFromAccessToken(accessToken);
 

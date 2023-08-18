@@ -15,7 +15,6 @@ export class AllExceptionsFilter implements ExceptionFilter {
   async catch(exception: HttpException, host: ArgumentsHost) {
     const ctx = host.switchToHttp();
     const response = ctx.getResponse<Response>();
-    const request = ctx.getRequest<Request>();
     // i18n.setLocale(i18n.getLocale(request));
 
     const error = exception.getResponse() as {

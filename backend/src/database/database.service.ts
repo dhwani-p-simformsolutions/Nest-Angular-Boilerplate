@@ -54,7 +54,7 @@ export class DatabaseService {
       const newFilename = path.resolve(migrationPath, `${baseFilename}.ts`);
       const className = camelName + date;
 
-      const template = templateGen(className, baseFilename);
+      const template = templateGen(className);
       await this.writeFile(newFilename, template);
       process.exit(0);
     } catch (e) {

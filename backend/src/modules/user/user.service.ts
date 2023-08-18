@@ -6,7 +6,7 @@ import {
   InternalServerErrorException,
   UnauthorizedException,
 } from '@nestjs/common';
-import { AuthToken } from 'src/shared/interfaces';
+import { AuthToken, UserDetails } from 'src/shared/interfaces';
 import { TokenService } from 'src/shared/services/token.service';
 import { UserRepository } from '../../shared/repository';
 import { UserLoginDto } from './dto/user-login.dto';
@@ -43,10 +43,10 @@ export class UserService {
   /**
    * Get user details from an access token.
    * @param {string} accessToken - The access token to extract user details from.
-   * @returns {Promise<any>} An object containing user details.
+   * @returns {Promise<UserDetails>} An object containing user details.
    * @throws {UnauthorizedException} If the access token is invalid.
    */
-  public async getUserDetailsFromAccessToken(accessToken: string): Promise<any> {
+  public async getUserDetailsFromAccessToken(accessToken: string): Promise<UserDetails | null> {
     try {
       const decodedToken = this.tokenService.verify(accessToken);
 
@@ -55,7 +55,7 @@ export class UserService {
       }
 
       const user = decodedToken;
-      return user || null;
+      return user;
     } catch (e) {
       throw new UnauthorizedException(statusMessages[401]);
     }

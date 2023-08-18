@@ -1,7 +1,7 @@
 /**
  * Migration file template
  */
-export const templateGen = (className: string, baseFilename: string) => {
+export const templateGen = (className: string) => {
   return `import { MigrationInterface, QueryRunner } from 'typeorm';
 
 export class ${className} implements MigrationInterface {
