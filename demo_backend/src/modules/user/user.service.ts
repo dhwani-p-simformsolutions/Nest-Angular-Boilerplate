@@ -41,7 +41,7 @@ export class UserService {
 
   public async getUserDetailsFromAccessToken(accessToken: string): Promise<any> {
     try {
-      const decodedToken = this.tokenService.verify(accessToken); // Assuming you have a JWT secret in your environment variables
+      const decodedToken = this.tokenService.verify(accessToken);
 
       if (!decodedToken) {
         throw new UnauthorizedException('Invalid access token');
